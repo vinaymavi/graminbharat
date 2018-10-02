@@ -17,8 +17,21 @@ class Firestore {
     let rows = dataArr && dataArr.map(item => map.merge(item));
     return List(rows).toJS();
   }
-  batchUplaod() {
-    
+  batchUplaod(rows) {
+    const batch = firestore.batch();
+    rows.forEach(row => {
+      batch.set(this.collection.doc(), row);
+    });
+
+    return batch
+      .commit()
+      .then(res => {
+        console.log(res);
+        return res;
+      })
+      .catch(err => {
+        console.log(`Error ${err}`);
+      });
   }
   add(data) {
     return this.collection.doc().set(data);

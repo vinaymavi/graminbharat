@@ -2,6 +2,9 @@ require("dotenv").config();
 const Firestore = require("../firebasestore");
 const usersCol = new Firestore("test_users");
 describe("Firestore Test cases", () => {
+  afterAll(()=>{
+    
+  })
   it("Firestore loaded successfully", () => {
     expect(Firestore).toBeTruthy();
   });
@@ -25,11 +28,17 @@ describe("Firestore Test cases", () => {
       "first"
     );
     return expect(
-      usersCol
-        .add(list[0])
-        .then((writeRef) => {
-          return writeRef.writeTime;
-        })
+      usersCol.add(list[0]).then(writeRef => {
+        return writeRef.writeTime;
+      })
     ).resolves.toBeTruthy();
+  });
+  it("Add batch upload", () => {
+    const list = usersCol.crateRows(
+      { name: "vinay" },
+      [{ class: 5 }, { class: 6 }],
+      "first"
+    );
+    expect(usersCol.batchUplaod(list)).resolves.toBeTruthy();
   });
 });

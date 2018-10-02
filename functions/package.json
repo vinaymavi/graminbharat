@@ -7,18 +7,22 @@
     "shell": "firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "test": "jest"
   },
   "dependencies": {
+    "dotenv": "^6.0.0",
     "firebase-admin": "~6.0.0",
-    "firebase-functions": "^2.0.3"
+    "firebase-functions": "^2.0.3",
+    "immutable": "next"
   },
   "engines": {
     "node": "8"
   },
   "devDependencies": {
     "eslint": "^4.12.0",
-    "eslint-plugin-promise": "^3.6.0"
+    "eslint-plugin-promise": "^3.6.0",
+    "jest": "^23.6.0"
   },
   "private": true
 }
