@@ -9,6 +9,9 @@ const constraint = require("./constraint");
 class Crawler {
   constructor(stage, page, url, waitForSec) {
     switch (stage) {
+      case constraint.stages.planYear:
+        this.stage = new PlanYear(page, url, waitForSec);
+        break;
       case constraint.stages.state:
         this.stage = new State(page, url, waitForSec);
         break;
@@ -25,9 +28,9 @@ class Crawler {
         this.stage = new Village(page, url, waitForSec);
         break;
       default:
-        this.stage = new PlanYear(page, url, waitForSec);
+        console.log(`invalid stage ${stage}`);
     }
   }
 }
 
-module.exports = Crawler
+module.exports = Crawler;

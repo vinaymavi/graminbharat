@@ -35,23 +35,23 @@ describe("My Puppeteer Test cases", async () => {
   });
 
   it("Stage created sucessfully.", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
-    const crawler = new Crawler("", page, URL, constraint.waitTime);
+    const crawler = new Crawler(constraint.stages.planYear, page, URL, constraint.waitTime);
     expect(crawler.stage).toBeTruthy();
   });
 
   it("Load plan year successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
-    const crawler = new Crawler("", page, URL, constraint.waitTime);
+    const crawler = new Crawler(constraint.stages.planYear, page, URL, constraint.waitTime);
     await crawler.stage.goto();
     const planYears = await crawler.stage.getValues();
     expect(planYears).toBeTruthy();
   });
 
   it("Load state successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
     const crawler = new Crawler(
       constraint.stages.state,
@@ -66,7 +66,7 @@ describe("My Puppeteer Test cases", async () => {
   });
 
   it("Load plan unit successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
     const crawler = new Crawler(
       constraint.stages.planUnitType,
@@ -82,7 +82,7 @@ describe("My Puppeteer Test cases", async () => {
   });
  
   it("Load district unit successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
     const crawler = new Crawler(
       constraint.stages.district,
@@ -97,7 +97,7 @@ describe("My Puppeteer Test cases", async () => {
   });
  
   it("Load block unit successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
     const crawler = new Crawler(
       constraint.stages.block,
@@ -112,7 +112,7 @@ describe("My Puppeteer Test cases", async () => {
   });
 
   it("Load villages unit successfully..", async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
     const crawler = new Crawler(
       constraint.stages.village,

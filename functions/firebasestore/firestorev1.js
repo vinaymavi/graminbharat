@@ -1,7 +1,7 @@
 const admin = require("firebase-admin");
 const functions = require("firebase-functions");
 const { Map, List } = require("immutable");
-
+const hash = require('object-hash')
 admin.initializeApp(functions.config().firebase);
 
 var firestore = admin.firestore();
@@ -20,7 +20,7 @@ class Firestore {
   batchUplaod(rows) {
     const batch = firestore.batch();
     rows.forEach(row => {
-      batch.set(this.collection.doc(), row);
+      batch.set(this.collection.doc(`/${hash(row)}`), row);
     });
 
     return batch
@@ -33,8 +33,9 @@ class Firestore {
         console.log(`Error ${err}`);
       });
   }
+
   add(data) {
-    return this.collection.doc().set(data);
+    return this.collection.doc(`/${hash(data)}`).set(data);
   }
 }
 
