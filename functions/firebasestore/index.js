@@ -1,2 +1,2 @@
-const Firestore = require("./firestorev1");
+const Firestore = require("./FirestoreV1");
 module.exports = Firestore;

@@ -8,13 +8,16 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "test": "jest"
+    "test": "jest ",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "dotenv": "^6.0.0",
     "firebase-admin": "~6.0.0",
     "firebase-functions": "^2.0.3",
-    "immutable": "next"
+    "immutable": "^3.8.2",
+    "puppeteer": "^1.8.0"
   },
   "engines": {
     "node": "8"
