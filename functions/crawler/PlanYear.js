@@ -7,7 +7,7 @@ class PlanYear extends BaseClass {
   }
   
   async getValues(){
-    return await Util.getSelectElmOptions(this.page,SELECTOR);
+    return [{text:'2017-2018',value:'2017-2018'}];
   }
 }
 
