@@ -3,14 +3,21 @@ const puppeteer = require("puppeteer");
 const Crawler = require("./crawler");
 const Firestore = require("./firebasestore");
 const constraint = require("./crawler/constraint");
-const rowsCol = new Firestore("rows");
-exports.rowListener = functions.firestore
-  .document("rows/{userId}")
+const COLLECTION_NAME = 'rows1';
+const rowsCol = new Firestore(COLLECTION_NAME);
+// Error =  "Possible EventEmitter memory leak detected. 11 SIGINT listeners added" solutions
+process.setMaxListeners(Infinity);
+exports.betaRowListener = functions.firestore
+  .document(`${COLLECTION_NAME}/{userId}`)
   .onCreate(async (snap, context) => {
-    const browser = await puppeteer.launch({args: ['--no-sandbox']});
+    const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
     const page = await browser.newPage();
     const data = snap.data();
     const crawler = new Crawler(data.stage, page, data.url, 2);
+    if (!crawler.stage) {
+      console.log(data);
+      return 0;
+    }
     await crawler.stage.goto();
     switch (data.stage) {
       case constraint.stages.planYear:
@@ -37,86 +44,106 @@ exports.rowListener = functions.firestore
 
     return 0;
 
-    function fetchPlanYearAndInsert() {
-      const list = crawler.stage.getValues();
+    async function fetchPlanYearAndInsert() {
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { plan_year: item.text, plan_year_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.state
-      );
-      return rowsCol.batchUplaod(preparedRows);
+
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.state
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
 
-    function fetchStateAndInsert() {
-      crawler.stage.changeSelection(data);
-      const list = crawler.stage.getValues();
+    async function fetchStateAndInsert() {
+      await crawler.stage.changeSelection(data);
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { state: item.text, state_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.planUnitType
-      );
-      return rowsCol.batchUplaod(preparedRows);
+
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.planUnitType
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
 
-    function fetchPlanUnitAndInsert() {
-      crawler.stage.changeSelection(data);
-      const list = crawler.stage.getValues();
+    async function fetchPlanUnitAndInsert() {
+      await crawler.stage.changeSelection(data);
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { plan_unit: item.text, plan_unit_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.district
-      );
-      return rowsCol.batchUplaod(preparedRows);
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.district
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
 
-    function fetchDistrictAndInsert() {
-      crawler.stage.changeSelection(data);
-      const list = crawler.stage.getValues();
+    async function fetchDistrictAndInsert() {
+      await crawler.stage.changeSelection(data);
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { district: item.text, district_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.block
-      );
-      return rowsCol.batchUplaod(preparedRows);
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.block
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
 
-    function fetchBlockAndInsert() {
-      crawler.stage.changeSelection(data);
-      const list = crawler.stage.getValues();
+    async function fetchBlockAndInsert() {
+      await crawler.stage.changeSelection(data);
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { block: item.text, block_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.village
-      );
-      return rowsCol.batchUplaod(preparedRows);
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.village
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
 
-    function fetchVillageAndInsert() {
-      crawler.stage.changeSelection(data);
-      const list = crawler.stage.getValues();
+    async function fetchVillageAndInsert() {
+      await crawler.stage.changeSelection(data);
+      const list = await crawler.stage.getValues();
       const preparedList = list.map(item => {
         return { village: item.text, village_value: item.value };
       });
-      const preparedRows = rowsCol.crateRows(
-        data,
-        preparedList,
-        constraint.stages.report
-      );
-      return rowsCol.batchUplaod(preparedRows);
+      if (preparedList && preparedList.length) {
+        const preparedRows = rowsCol.crateRows(
+          data,
+          preparedList,
+          constraint.stages.report
+        );
+        return rowsCol.batchUplaod(preparedRows);
+      }
+      return 0;
     }
   });
