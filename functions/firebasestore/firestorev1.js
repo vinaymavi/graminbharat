@@ -20,22 +20,14 @@ class Firestore {
   batchUplaod(rows) {
     const batch = firestore.batch();
     rows.forEach(row => {
-      batch.set(this.collection.doc(`/${hash(row)}`), row);
+      batch.create(this.collection.doc(`${hash(row)}`), row);
     });
-
     return batch
       .commit()
-      .then(res => {
-        console.log(res);
-        return res;
-      })
-      .catch(err => {
-        console.log(`Error ${err}`);
-      });
   }
 
-  add(data) {
-    return this.collection.doc(`/${hash(data)}`).set(data);
+  add(data) { 
+    return this.collection.doc(`${hash(data)}`).create(data);
   }
 }
 
