@@ -4,6 +4,8 @@ const PlanUnitType = require("./PlanUnitType");
 const District = require("./District");
 const Block = require("./Block");
 const Village = require("./Village");
+const Report = require('./Report');
+
 const constraint = require("./constraint");
 
 class Crawler {
@@ -26,6 +28,9 @@ class Crawler {
         break;
       case constraint.stages.village:
         this.stage = new Village(page, url, waitForSec);
+        break;
+      case constraint.stages.report:
+        this.stage = new Report(page, url, waitForSec);
         break;
       default:
         console.log(`invalid stage ${stage}`);

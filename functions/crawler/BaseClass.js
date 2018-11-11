@@ -23,6 +23,9 @@ class BaseClass {
   getValues(){
     throw new Error("This is an abstract method.");
   }
+  getContent(){
+    return this.page.content();
+  }
 }
 
 module.exports = BaseClass;

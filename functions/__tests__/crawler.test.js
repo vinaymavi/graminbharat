@@ -125,4 +125,20 @@ describe("My Puppeteer Test cases", async () => {
     const villages = await crawler.stage.getValues();
     expect(villages).toBeTruthy();
   });
+  
+  it("Load villages Report successfully..", async () => {
+    browser = await puppeteer.launch({args: ['--no-sandbox']});
+    const page = await browser.newPage();
+    const crawler = new Crawler(
+      constraint.stages.report,
+      page,
+      URL,
+      constraint.waitTime
+    );
+    await crawler.stage.goto();
+    await crawler.stage.changeSelection(testData);
+    await crawler.stage.triggerClick();
+    const villageReport = await crawler.stage.getValues();
+    expect(villageReport.length).toBeTruthy();
+  });
 });

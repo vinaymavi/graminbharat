@@ -2,7 +2,7 @@ class Util {
   constructor() {}
 
   static changeSelectElmValue(page, selector, value) {
-    console.log("Change Options",`Selector = ${selector}`,`value = ${value}`);
+    console.log("Change Options", `Selector = ${selector}`, `value = ${value}`);
     return page.$eval(
       selector,
       (el, value) => {
@@ -15,7 +15,7 @@ class Util {
   }
 
   static getSelectElmOptions(page, selector) {
-    console.log("Get Options",`Selector = ${selector}`);
+    console.log("Get Options", `Selector = ${selector}`);
     return page.$eval(selector, el => {
       let options = [];
       el.querySelectorAll("option").forEach(e => {
@@ -34,6 +34,23 @@ class Util {
   static triggerClick(page, selector) {
     return page.$eval(selector, el => {
       el.click();
+    });
+  }
+
+  static getReport(page, selector) {
+    return page.$$eval(selector, rows => {
+      let report = [];
+      let row;
+      // i=2 to skip first two rows.
+      for (let i = 2; i < rows.length; i++) {
+        row = rows[i];
+        let reportArr = [];
+        row.querySelectorAll("td").forEach(column => {
+          reportArr.push(column.innerText);
+        });
+        report.push(reportArr);
+      }
+      return report;
     });
   }
 }

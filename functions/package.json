@@ -9,6 +9,7 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
     "test": "jest ",
+    "test:band": "jest --runInBand",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
