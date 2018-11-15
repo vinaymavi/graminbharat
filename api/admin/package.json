@@ -31,7 +31,7 @@
   "bundleDependencies": false,
   "dependencies": {
     "react-ga": "^2.4.1",
-    "remove-markdown": "^0.2.2",
+    "remove-markdown": "^0.3.0",
     "shelljs": "^0.7.8"
   },
   "deprecated": false,
