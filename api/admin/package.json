@@ -37,7 +37,7 @@
   "deprecated": false,
   "description": "Strapi Admin",
   "devDependencies": {
-    "sanitize.css": "^4.1.0",
+    "sanitize.css": "^8.0.0",
     "strapi-helper-plugin": "3.0.0-alpha.14.5",
     "strapi-utils": "3.0.0-alpha.14.5"
   },
