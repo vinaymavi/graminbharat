@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "state",
+    "description": "State List "
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "state_name": {
+      "default": "",
+      "type": "string"
+    },
+    "active": {
+      "default": false,
+      "type": "boolean"
+    },
+    "add_date": {
+      "default": "",
+      "type": "date"
+    },
+    "update_date": {
+      "default": "",
+      "type": "date"
+    }
+  }
+}

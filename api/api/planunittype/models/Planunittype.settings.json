@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "planunittype",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "plan_unit_name": {
+      "default": "",
+      "type": "string"
+    },
+    "active": {
+      "default": false,
+      "type": "boolean"
+    },
+    "add_date": {
+      "default": "",
+      "type": "date"
+    },
+    "update_date": {
+      "default": "",
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/villages",
+      "handler": "Villages.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/villages/count",
+      "handler": "Villages.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/villages/:_id",
+      "handler": "Villages.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/villages",
+      "handler": "Villages.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/villages/:_id",
+      "handler": "Villages.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/villages/:_id",
+      "handler": "Villages.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

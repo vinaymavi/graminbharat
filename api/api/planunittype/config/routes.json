@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/planunittypes",
+      "handler": "Planunittype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/planunittypes/count",
+      "handler": "Planunittype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/planunittypes/:_id",
+      "handler": "Planunittype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/planunittypes",
+      "handler": "Planunittype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/planunittypes/:_id",
+      "handler": "Planunittype.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/planunittypes/:_id",
+      "handler": "Planunittype.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

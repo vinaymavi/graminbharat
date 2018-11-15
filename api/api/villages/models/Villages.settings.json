@@ -1,0 +1,33 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "villages",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "village_name": {
+      "default": "",
+      "type": "string"
+    },
+    "village_id": {
+      "default": "",
+      "type": "integer"
+    },
+    "active": {
+      "default": false,
+      "type": "boolean"
+    },
+    "add_date": {
+      "default": "",
+      "type": "date"
+    },
+    "update_date": {
+      "default": "",
+      "type": "date"
+    }
+  }
+}
