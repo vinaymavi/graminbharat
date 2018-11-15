@@ -38,7 +38,7 @@
   "description": "This is the description of the plugin.",
   "devDependencies": {
     "react-copy-to-clipboard": "5.0.1",
-    "strapi-helper-plugin": "3.0.0-alpha.14.5"
+    "strapi-helper-plugin": "3.0.0-debugalpha.4.1"
   },
   "engines": {
     "node": ">= 9.0.0",
