@@ -32,13 +32,13 @@
   "dependencies": {
     "react-ga": "^2.4.1",
     "remove-markdown": "^0.3.0",
-    "shelljs": "^0.7.8"
+    "shelljs": "^0.8.0"
   },
   "deprecated": false,
   "description": "Strapi Admin",
   "devDependencies": {
-    "sanitize.css": "^4.1.0",
-    "strapi-helper-plugin": "3.0.0-alpha.14.5",
+    "strapi-helper-plugin": "3.0.0-debugalpha.4.1",
+    "sanitize.css": "^8.0.0",
     "strapi-utils": "3.0.0-alpha.14.5"
   },
   "engines": {
