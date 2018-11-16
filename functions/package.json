@@ -28,7 +28,7 @@
     "@google-cloud/functions-emulator": "^1.0.0-beta.5",
     "eslint": "^4.12.0",
     "eslint-plugin-promise": "^3.6.0",
-    "firebase-tools": "^4.2.1",
+    "firebase-tools": "^6.0.0",
     "jest": "^23.6.0"
   },
   "private": true
