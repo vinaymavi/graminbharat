@@ -34,9 +34,9 @@
   "deprecated": false,
   "description": "Strapi plugin to manage settings.",
   "devDependencies": {
+    "strapi-helper-plugin": "3.0.0-debugalpha.4.1"
     "flag-icon-css": "^3.0.0",
     "react-select": "^2.0.0",
-    "strapi-helper-plugin": "3.0.0-alpha.14.5"
   },
   "engines": {
     "node": ">= 9.0.0",

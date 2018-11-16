@@ -41,7 +41,7 @@
     "draft-js": "^0.10.5",
     "react-select": "^2.0.0",
     "showdown": "^1.8.6",
-    "strapi-helper-plugin": "3.0.0-alpha.14.5"
+    "strapi-helper-plugin": "3.0.0-debugalpha.4.1"
   },
   "engines": {
     "node": ">= 9.0.0",
