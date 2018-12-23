@@ -1,0 +1,34 @@
+version: 2.1
+jobs:
+  google-cloud-function:
+    docker:
+      - image: circleci/node:8
+    working_directory: ~/project/functions/
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: node --version
+      - run: sudo apt-get install -yq gconf-service xvfb libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+      - run: cd functions && npm install && npm run test
+  google-appengine:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: python --version
+      - run: cd gbapi && pip install -r requirements.txt --user
+      - run: echo $DEV_GCLOUD_ACCOUNT_KEY
+      - run: echo $DEV_GCLOUD_ACCOUNT_KEY > key.json
+      - run: wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-228.0.0-linux-x86_64.tar.gz
+      - run: tar -xvf google-cloud-sdk-228.0.0-linux-x86_64.tar.gz
+      - run: CLOUDSDK_CORE_DISABLE_PROMPTS=1
+      - run: ./google-cloud-sdk/install.sh -q 
+      - run: ./google-cloud-sdk/bin/gcloud auth activate-service-account --key-file key.json -q 
+      - run: ./google-cloud-sdk/bin/gcloud app deploy ./gbapi/ --project api-dev-graminbharat -q 
+workflows:
+  version: 2
+  deploy_to_dev:
+    jobs:
+      - google-cloud-function
+      - google-appengine

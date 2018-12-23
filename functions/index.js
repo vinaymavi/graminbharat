@@ -10,7 +10,7 @@ process.setMaxListeners(Infinity);
 exports.betaRowListener = functions.firestore
   .document(`${COLLECTION_NAME}/{userId}`)
   .onCreate(async (snap, context) => {
-    const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+    const browser = await puppeteer.launch({ args: ["--no-sandbox","--disable-setuid-sandbox"] });
     const page = await browser.newPage();
     const data = snap.data();
     const crawler = new Crawler(data.stage, page, data.url, 2);
