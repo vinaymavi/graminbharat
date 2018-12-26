@@ -18,7 +18,6 @@ jobs:
       - run: echo "A first hello"
       - run: python --version
       - run: cd gbapi && pip install -r requirements.txt --user
-      - run: echo $DEV_GCLOUD_ACCOUNT_KEY
       - run: echo $DEV_GCLOUD_ACCOUNT_KEY > key.json
       - run: wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-228.0.0-linux-x86_64.tar.gz
       - run: tar -xvf google-cloud-sdk-228.0.0-linux-x86_64.tar.gz
