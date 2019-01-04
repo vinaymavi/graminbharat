@@ -30,7 +30,7 @@ workflows:
   deploy_to_dev:
     jobs:
       - google-cloud-function
-      - google-appengine
+      - google-appengine:
         filters:
           branches:
             only: master
