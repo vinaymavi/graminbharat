@@ -29,8 +29,11 @@ workflows:
   version: 2
   deploy_to_dev:
     jobs:
-      - google-cloud-function
-      - google-appengine
-        filters:
-          branches:
-            only: master
+      - google-cloud-function:
+          filters:
+            branches:
+              only: master
+      - google-appengine:
+          filters:
+            branches:
+              only: master
