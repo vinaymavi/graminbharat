@@ -19,4 +19,5 @@ data that needed to scrap a vaillage record.
     we import data from firebase firestore to big query 
     command `gcloud beta firestore export gs://prod-graminbharat.appspot.com/firestorebackup1 --collection-ids='<collection_name>'`
 
+
 ## Read Data from Biq Query and push to task queue
