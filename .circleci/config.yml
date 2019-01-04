@@ -31,3 +31,6 @@ workflows:
     jobs:
       - google-cloud-function
       - google-appengine
+        filters:
+          branches:
+            only: master
