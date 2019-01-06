@@ -139,6 +139,7 @@ describe("My Puppeteer Test cases", async () => {
     await crawler.stage.changeSelection(testData);
     await crawler.stage.triggerClick();
     const villageReport = await crawler.stage.getValues();
+    console.log(villageReport);
     expect(villageReport.length).toBeTruthy();
   });
 });
