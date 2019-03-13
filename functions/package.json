@@ -14,7 +14,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "dotenv": "^6.0.0",
+    "dotenv": "^7.0.0",
     "firebase-admin": "~6.0.0",
     "firebase-functions": "^2.0.3",
     "immutable": "^3.8.2",
